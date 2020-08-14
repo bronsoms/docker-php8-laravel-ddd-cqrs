@@ -1,0 +1,19 @@
+version: '3.7'
+
+x-networks:
+  &networks
+  - api
+
+services:
+  php-fpm:
+    build:
+      context: .
+      dockerfile: ./docker/php-fpm/Dockerfile
+
+  nginx:
+    build:
+      context: .
+      dockerfile: ./docker/nginx/Dockerfile
+
+networks:
+  api:

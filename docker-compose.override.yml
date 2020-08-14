@@ -1,0 +1,61 @@
+version: '3.7'
+
+x-dev-networks:
+  &dev-networks
+  api:
+
+x-common-env-vars:
+  &dev-env-vars
+  APP_KEY:
+
+services:
+  swagger-ui:
+    image: swaggerapi/swagger-ui
+    build:
+      context: ./docker/swagger/
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+
+  mail:
+    build:
+      context: .
+      dockerfile: ./docker/mailhog/Dockerfile
+    networks: *dev-networks
+    ports:
+      - 1025:1025
+      - 8025:8025
+
+  mysql:
+    build:
+      context: .
+      dockerfile: ./docker/mysql/Dockerfile
+    networks: *dev-networks
+    ports:
+      - "3317:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - "./src/var/log/mysql:/var/log"
+     # - "./src/var/storage/mysql:/var/lib/mysql"
+
+  php-fpm:
+    build:
+      target: development
+    networks: *dev-networks
+    volumes:
+      - ./src/:/opt/app/
+      - ./docker/php-fpm/init.sh:/usr/local/bin/init.sh
+    environment:
+      <<: *dev-env-vars
+    depends_on:
+      - mysql
+    command: ["/bin/sh", "/usr/local/bin/wait-for-it.sh", "mysql:3306", "--", "/usr/local/bin/init.sh"]
+
+
+  nginx:
+    ports:
+      - 80:80
+    networks: *dev-networks
+    depends_on:
+      - php-fpm

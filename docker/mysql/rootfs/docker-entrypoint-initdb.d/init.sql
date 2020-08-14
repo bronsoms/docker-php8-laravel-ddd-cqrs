@@ -1,0 +1,6 @@
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `laravel` /*!40100 DEFAULT CHARACTER SET utf8 */;
+
+USE `laravel`;
+
+CREATE USER 'app'@'%' IDENTIFIED BY 'qwerty';
+GRANT ALL PRIVILEGES ON laravel.* TO 'app'@'%' WITH GRANT OPTION;

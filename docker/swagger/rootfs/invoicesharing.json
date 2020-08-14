@@ -1,0 +1,128 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "Invoice Sharing - Welcome test",
+    "description": "Hello $developer, our PM give us this swagger definition to build a basic API. You should implement all the methods and create PR. __Have fun :)__.",
+    "version": "1.0.0"
+  },
+  "host": "127.0.0.1",
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/invoice/{uuid}": {
+      "get": {
+        "summary": "Get Invoice",
+        "produces": [
+          "application/json"
+        ],
+        "description": "We want to fetch one invoice by it's uuid",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "uuid",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List invoice details",
+            "schema": {
+              "$ref": "#/definitions/Invoice"
+            }
+          },
+          "404": {
+            "description": "Invoice not found in the system."
+          }
+        }
+      }
+    },
+    "/invoice": {
+      "post": {
+        "summary": "Create new invoice",
+        "description": "We should be available to create a new Invoice in the system.",
+        "parameters": [
+          {
+            "name": "data",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/CreateInvoice"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Invoice created"
+          },
+          "404": {
+            "description": "Validation failed"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Invoice": {
+      "type": "object",
+      "properties": {
+        "uuid": {
+          "type": "string"
+        },
+        "company_sender": {
+          "type": "string"
+        },
+        "company_receiver": {
+          "type": "string"
+        },
+        "lines": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/InvoiceLines"
+          }
+        },
+        "total_amount": {
+          "type": "number",
+          "format": "float"
+        },
+        "vat_amount": {
+          "type": "number",
+          "format": "float"
+        }
+      }
+    },
+    "InvoiceLines": {
+      "type": "object",
+      "properties": {
+        "product": {
+          "type": "string"
+        },
+        "amount": {
+          "type": "number",
+          "format": "float"
+        }
+      }
+    },
+    "CreateInvoice": {
+      "type": "object",
+      "properties": {
+        "company_sender": {
+          "type": "string"
+        },
+        "company_receiver": {
+          "type": "string"
+        },
+        "lines": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/InvoiceLines"
+          }
+        }
+      }
+    }
+  }
+}
