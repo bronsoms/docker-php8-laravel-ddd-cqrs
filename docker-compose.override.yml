@@ -7,6 +7,12 @@ x-dev-networks:
 x-common-env-vars:
   &dev-env-vars
   APP_KEY:
+  DB_HOST: mysql
+  DB_USERNAME: root
+  DB_PASSWORD: 12345678
+  DB_DATABASE: pipol
+  APP_ENV: local
+  JWT_SECRET: RfmW4NPNecezNc1x0q44PIUex8CwkXuExgEbUGX3vl7BYiM5Dm6BAezs64QOtp6b
 
 services:
   swagger-ui:
@@ -32,9 +38,11 @@ services:
       dockerfile: ./docker/mysql/Dockerfile
     networks: *dev-networks
     ports:
-      - "3317:3306"
+      - "3306:3306"
     environment:
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: pipol
+      MYSQL_ROOT_PASSWORD: 12345678
+      TZ: ${TIMEZONE:-Europe/Madrid}
     volumes:
       - "./src/var/log/mysql:/var/log"
      # - "./src/var/storage/mysql:/var/lib/mysql"
@@ -51,7 +59,6 @@ services:
     depends_on:
       - mysql
     command: ["/bin/sh", "/usr/local/bin/wait-for-it.sh", "mysql:3306", "--", "/usr/local/bin/init.sh"]
-
 
   nginx:
     ports:

@@ -43,6 +43,10 @@ class Kernel extends HttpKernel
             'throttle:60,1',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
+
+        'fully-auth' => [
+            'jwt.auth',
+        ],
     ];
 
     /**
@@ -63,5 +67,6 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        'authorization.token' => \App\SDK\Infrastructure\Ui\Http\Middleware\AuthTokenVerifierMiddleware::class,
     ];
 }

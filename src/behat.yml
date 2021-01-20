@@ -1,0 +1,14 @@
+---
+# REMINDER: Always put the HttpContext (or FeatureContext) last in the list of contexts!
+#           Otherwise the Laravel application is not rebooted between scenario's.
+#           See https://github.com/laracasts/Behat-Laravel-Extension/issues/76
+default:
+  gherkin:
+    cache: ~
+  suites:
+    default:
+      paths:
+       - "%paths.base%/tests/SDK/Functional/Features/User"
+      contexts:
+        - Tests\SDK\Functional\Context\UserContext
+        - Tests\SDK\Functional\Context\HttpContext

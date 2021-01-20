@@ -3,22 +3,23 @@ FROM php:7.4-fpm-alpine as production
 # Install needed modules to run the application
 RUN apk update \
  && apk --quiet add \
-    libzip-dev
+    libzip-dev \
+    icu-dev
 
 # Add php extension to work with zip files
 RUN docker-php-ext-install -j$(nproc) \
-    zip
+    pdo_mysql \
+    zip \
+    bcmath \
+    intl
 
 WORKDIR /opt/app
 
-# Install Composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-
-# Add prestissimo for parallel composer downloads
-RUN composer global require "hirak/prestissimo"
-
 # Copy source code into container
 COPY ./src/ .
+
+# Install Composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # Install production dependencies
 RUN composer install --no-dev

@@ -16,4 +16,5 @@
 /src/storage/tmp/*
 
 /src/tests/results/*
+/src/tests/coverage/*
 !/src/tests/results/.gitkeep

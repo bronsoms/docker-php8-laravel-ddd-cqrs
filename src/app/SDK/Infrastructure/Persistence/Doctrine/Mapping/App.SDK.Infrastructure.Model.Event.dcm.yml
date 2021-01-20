@@ -1,0 +1,40 @@
+App\SDK\Infrastructure\Model\Event:
+  type: entity
+  table: event_store
+  repositoryClass: App\SDK\Infrastructure\Persistence\Doctrine\DoctrineEventRepository
+  id:
+    id:
+      type: integer
+      column: id
+      generator:
+        strategy: AUTO
+  fields:
+    uuid:
+      column: uuid
+      type: string
+      nullable: false
+    playhead:
+      column: playhead
+      type: integer
+      nullable: false
+    metadata:
+      column: metadata
+      type: json_array
+      nullable: false
+    payload:
+      column: payload
+      type: json_array
+      nullable: false
+    recordedOn:
+      column: recorded_on
+      type: string
+      nullable: false
+    type:
+      column: type
+      type: string
+      nullable: false
+  indexes:
+    idx_uuid_type:
+      columns: [ uuid, type ]
+    idx_type_uuid:
+      columns: [ type, type ]
