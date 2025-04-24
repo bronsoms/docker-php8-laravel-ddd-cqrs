@@ -1,0 +1,36 @@
+Shared\Domain\Model\User\User:
+  type: entity
+  table: users
+  repositoryClass: Shared\Infrastructure\Persistence\User\DoctrineUserRepository
+  id:
+    userId:
+      type: user_id
+      column: user_id
+      generator:
+        strategy: NONE
+  fields:
+    firstName:
+      column: first_name
+      type: first_name
+    lastName:
+      column: last_name
+      type: last_name
+    username:
+      column: username
+      type: username
+      unique: true
+    password:
+      column: password
+      type: string
+    rememberToken:
+      column: remember_token
+      type: string
+      nullable: true
+      unique: true
+    rememberTokenName:
+      column: remember_token_name
+      type: string
+      nullable: true
+  indexes:
+    username_index:
+      columns: [ username ]

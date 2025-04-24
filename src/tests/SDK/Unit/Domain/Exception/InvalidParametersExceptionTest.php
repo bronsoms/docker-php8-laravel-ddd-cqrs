@@ -2,9 +2,9 @@
 
 namespace Tests\SDK\Unit\Domain\Exception;
 
-use App\SDK\Domain\Exception\InvalidParametersException;
-use App\SDK\Domain\Exception\DomainException;
-use App\SDK\Domain\Exception\ExceptionCodes;
+use Shared\Domain\Exception\InvalidParametersException;
+use Shared\Domain\Exception\DomainException;
+use Shared\Domain\Exception\ExceptionCodes;
 use Tests\ExceptionTestBase;
 
 class InvalidParametersExceptionTest extends ExceptionTestBase

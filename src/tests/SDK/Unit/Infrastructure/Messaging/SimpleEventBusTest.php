@@ -3,8 +3,8 @@
 namespace Tests\SDK\Unit\Infrastructure\Messaging;
 
 use Broadway\EventSourcing\MetadataEnrichment\MetadataEnricher;
-use App\SDK\Application\Exception\MethodNotImplementedException;
-use App\SDK\Infrastructure\Messaging\SimpleEventBus;
+use Shared\Application\Exception\MethodNotImplementedException;
+use Shared\Infrastructure\Messaging\SimpleEventBus;
 use Illuminate\Contracts\Foundation\Application;
 use Broadway\EventHandling\EventListener;
 use Tests\TestCase;

@@ -2,8 +2,8 @@
 
 namespace Tests\SDK\Unit\Domain\Model\User;
 
-use App\SDK\Domain\Exception\User\FirstNameNotValidException;
-use App\SDK\Domain\Model\User\FirstName;
+use Shared\Domain\Exception\User\FirstNameNotValidException;
+use Shared\Domain\Model\User\FirstName;
 use Tests\TestCase;
 
 class FirstNameTest extends TestCase

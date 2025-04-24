@@ -2,11 +2,11 @@
 
 namespace Tests\SDK\Integration\Infrastructure\Persistence\User;
 
-use App\SDK\Domain\Exception\User\UserNotFoundException;
+use Shared\Domain\Exception\User\UserNotFoundException;
 use Tests\SDK\Tools\Stub\User\Domain\UserIdStub;
-use App\SDK\Domain\Model\User\UserRepository;
+use Shared\Domain\Model\User\UserRepository;
 use Tests\SDK\Tools\Seeder\User\UserSeeder;
-use App\SDK\Domain\Model\User\User;
+use Shared\Domain\Model\User\User;
 use Tests\DatabaseTestCase;
 
 class DoctrineUserRepositoryTest extends DatabaseTestCase

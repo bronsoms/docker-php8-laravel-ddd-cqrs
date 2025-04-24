@@ -2,8 +2,8 @@
 
 namespace Tests\SDK\Unit\Domain\Model\User;
 
-use App\SDK\Domain\Exception\User\PasswordNotValidException;
-use App\SDK\Domain\Model\User\Password;
+use Shared\Domain\Exception\User\PasswordNotValidException;
+use Shared\Domain\Model\User\Password;
 use Tests\TestCase;
 
 class PasswordTest extends TestCase

@@ -2,8 +2,8 @@
 
 namespace Tests\SDK\Unit\Infrastructure\Exception;
 
-use App\SDK\Infrastructure\Exception\QueryHandlerMethodNotFoundException;
-use App\SDK\Infrastructure\Exception\InfrastructureException;
+use Shared\Infrastructure\Exception\QueryHandlerMethodNotFoundException;
+use Shared\Infrastructure\Exception\InfrastructureException;
 use Tests\ExceptionTestBase;
 
 class QueryHandlerMethodNotFoundExceptionTest extends ExceptionTestBase

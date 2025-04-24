@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands\Doctrine;
 
-use App\SDK\Infrastructure\Providers\DoctrineServiceProvider;
+use Shared\Infrastructure\Providers\DoctrineServiceProvider;
 use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\ORM\Tools\SchemaTool;
 use Illuminate\Console\Command;

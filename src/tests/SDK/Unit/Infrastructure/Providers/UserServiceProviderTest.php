@@ -2,16 +2,16 @@
 
 namespace Tests\SDK\Unit\Infrastructure\Providers;
 
-use App\SDK\Infrastructure\Persistence\User\DoctrineUserIdGenerator;
-use App\SDK\Infrastructure\Persistence\User\DoctrineUserRepository;
-use App\SDK\Infrastructure\Providers\DoctrineServiceProvider;
-use App\SDK\Infrastructure\Providers\UserServiceProvider;
+use Shared\Infrastructure\Persistence\User\DoctrineUserIdGenerator;
+use Shared\Infrastructure\Persistence\User\DoctrineUserRepository;
+use Shared\Infrastructure\Providers\DoctrineServiceProvider;
+use Shared\Infrastructure\Providers\UserServiceProvider;
 use Illuminate\Contracts\Foundation\Application;
-use App\SDK\Domain\Service\User\UserIdGenerator;
-use App\SDK\Domain\Model\User\UserRepository;
+use Shared\Domain\Service\User\UserIdGenerator;
+use Shared\Domain\Model\User\UserRepository;
 use Doctrine\ORM\Mapping\ClassMetadata;
 use Broadway\EventHandling\EventBus;
-use App\SDK\Domain\Model\User\User;
+use Shared\Domain\Model\User\User;
 use Tests\ServiceProviderTestCase;
 use Doctrine\ORM\EntityManager;
 

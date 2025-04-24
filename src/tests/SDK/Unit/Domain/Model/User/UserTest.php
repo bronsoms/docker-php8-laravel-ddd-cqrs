@@ -7,7 +7,7 @@ use Tests\SDK\Tools\Stub\User\Domain\LastNameStub;
 use Tests\SDK\Tools\Stub\User\Domain\UsernameStub;
 use Tests\SDK\Tools\Stub\User\Domain\PasswordStub;
 use Tests\SDK\Tools\Stub\User\Domain\UserIdStub;
-use App\SDK\Domain\Model\User\User;
+use Shared\Domain\Model\User\User;
 use Tests\TestCase;
 
 class UserTest extends TestCase

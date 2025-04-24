@@ -2,7 +2,7 @@
 
 namespace Tests\SDK\Tools\Stub\User\Domain;
 
-use App\SDK\Domain\Model\User\User;
+use Shared\Domain\Model\User\User;
 use Faker\Factory;
 
 class UserStub

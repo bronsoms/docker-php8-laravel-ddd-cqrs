@@ -2,11 +2,11 @@
 
 namespace Tests\SDK\Unit\Infrastructure\Messaging;
 
-use App\SDK\Infrastructure\Exception\CommandHandlerNotFoundException;
-use App\SDK\Application\Exception\MethodNotImplementedException;
-use App\SDK\Infrastructure\Messaging\SimpleCommandBus;
+use Shared\Infrastructure\Exception\CommandHandlerNotFoundException;
+use Shared\Application\Exception\MethodNotImplementedException;
+use Shared\Infrastructure\Messaging\SimpleCommandBus;
 use Illuminate\Contracts\Container\Container;
-use App\SDK\Domain\Messaging\Command\Command;
+use Shared\Domain\Messaging\Command\Command;
 use Broadway\CommandHandling\CommandHandler;
 use Tests\TestCase;
 

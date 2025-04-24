@@ -1,14 +1,14 @@
 {
-    "name": "laravel/laravel",
+    "name": "bronsoms/docker-php8-laravel-ddd-cqrs",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "PHP 8 Laravel Sample Skeleton.",
     "keywords": [
         "framework",
         "laravel"
     ],
     "license": "MIT",
     "require": {
-        "php": "^7.4",
+        "php": ">=8.1",
         "ext-bcmath": "*",
         "ext-intl": "*",
         "ext-json": "*",
@@ -16,42 +16,38 @@
         "ext-pdo": "*",
         "broadway/broadway": "^2.4",
         "doctrine/orm": "^2.8",
-        "fideloper/proxy": "^4.2",
-        "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
-        "laravel/framework": "^8.0",
-        "laravel/tinker": "^2.0",
-        "symfony/yaml": "^5.2",
-        "tymon/jwt-auth": "^1.0"
+        "laravel/framework": "^10.0",
+        "lcobucci/jwt": "^4.0",
+        "symfony/yaml": "6.0",
+        "symfony/cache": "^6.0"
     },
     "require-dev": {
-        "behat/behat": "^3.8",
-        "facade/ignition": "^2.3.6",
-        "fzaninotto/faker": "^1.9.1",
-        "laravel/telescope": "^4.4",
-        "mockery/mockery": "^1.3.1",
-        "nunomaduro/collision": "^5.0",
-        "phpmd/phpmd": "@stable",
-        "phpspec/prophecy-phpunit": "^2.0",
-        "phpunit/phpunit": "^9.0",
-        "squizlabs/php_codesniffer": "^3.5"
+        "behat/behat": "^3.14.0",
+        "fakerphp/faker": "^1.23.1",
+        "mockery/mockery": "^1.6.12",
+        "phpunit/phpunit": "^9.6.20",
+        "squizlabs/php_codesniffer": "^3.10.2",
+        "laravel/tinker": "^2.9.0"
     },
     "config": {
-        "optimize-autoloader": true,
         "preferred-install": "dist",
-        "sort-packages": true
-    },
-    "extra": {
-        "laravel": {
-            "dont-discover": [
-                "laravel/telescope"
-            ]
+        "sort-packages": true,
+        "process-timeout": 0,
+        "allow-plugins": {
+            "neronmoon/scriptsdev": true,
+            "kylekatarnls/update-helper": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true,
+            "php-http/discovery": true
+        },
+        "platform": {
+            "php": "8.1.0"
         }
     },
     "autoload": {
         "psr-4": {
             "App\\": "app/",
-            "SDK\\": "app/SDK",
+            "Shared\\": "app/Shared",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
         }
@@ -64,15 +60,40 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
+        "post-install-cmd": [
+            "@php artisan clear-compiled",
+            "Illuminate\\Foundation\\ComposerScripts::postInstall"
+        ],
+        "post-update-cmd": [
+            "@php artisan clear-compiled",
+            "Illuminate\\Foundation\\ComposerScripts::postUpdate"
+        ],
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
-            "@php artisan package:discover --ansi"
-        ],
-        "post-root-package-install": [
-            "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
-        ],
-        "post-create-project-cmd": [
-            "@php artisan key:generate --ansi"
+            "@php artisan package:discover"
         ]
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": [
+                "laravel/passport"
+            ]
+        },
+        "scripts-dev": {
+            "code-standard": "vendor/bin/phpcs --parallel=10 -p --colors -n -s --standard=phpcs.xml --extensions=php --ignore='vendor/*,storage/framework/*,storage/templates_c/*,bootstrap/cache/*' .",
+            "code-formatter": "sudo vendor/bin/phpcbf --parallel=10 -p --colors -n -s --standard=phpcs.xml --extensions=php --ignore='vendor/*,storage/framework/*,storage/templates_c/*,bootstrap/cache/*' .",
+            "lint": "vendor/bin/parallel-lint --exclude vendor .",
+            "php-version-compatibility": "vendor/bin/phpcs --parallel=10 -p --colors -n -s --standard=PHPCompatibility --extensions=php --runtime-set testVersion 8.1- --ignore='vendor/*' .",
+            "ide-helpers": [
+                "@php artisan ide-helper:generate",
+                "@php artisan ide-helper:meta"
+            ],
+            "post-install-cmd": [
+                "@ide-helpers"
+            ],
+            "post-update-cmd": [
+                "@ide-helpers"
+            ]
+        }
     }
 }

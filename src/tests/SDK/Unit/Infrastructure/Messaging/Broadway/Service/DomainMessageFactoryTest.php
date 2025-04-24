@@ -2,7 +2,7 @@
 
 namespace Tests\SDK\Unit\Infrastructure\Messaging\Broadway\Service;
 
-use App\SDK\Infrastructure\Messaging\Broadway\Service\DomainMessageFactory;
+use Shared\Infrastructure\Messaging\Broadway\Service\DomainMessageFactory;
 use Tests\SDK\Tools\RandomNumberGenerator;
 use Broadway\Domain\Metadata;
 use Tests\TestCase;

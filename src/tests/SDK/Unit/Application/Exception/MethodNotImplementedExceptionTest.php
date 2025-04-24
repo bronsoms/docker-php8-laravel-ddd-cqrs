@@ -2,9 +2,9 @@
 
 namespace Tests\SDK\Unit\Application\Exception;
 
-use App\SDK\Application\Exception\MethodNotImplementedException;
-use App\SDK\Application\Exception\ApplicationException;
-use App\SDK\Application\Exception\ExceptionCodes;
+use Shared\Application\Exception\MethodNotImplementedException;
+use Shared\Application\Exception\ApplicationException;
+use Shared\Application\Exception\ExceptionCodes;
 use Tests\TestCase;
 
 class MethodNotImplementedExceptionTest extends TestCase

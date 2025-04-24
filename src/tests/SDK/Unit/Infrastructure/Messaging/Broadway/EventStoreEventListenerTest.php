@@ -2,10 +2,10 @@
 
 namespace Tests\SDK\Unit\Infrastructure\Messaging\Broadway;
 
-use App\SDK\Infrastructure\Messaging\Broadway\Service\DomainMessageFactory;
-use App\SDK\Infrastructure\Messaging\Broadway\EventStoreEventListener;
+use Shared\Infrastructure\Messaging\Broadway\Service\DomainMessageFactory;
+use Shared\Infrastructure\Messaging\Broadway\EventStoreEventListener;
 use Tests\SDK\Tools\RandomNumberGenerator;
-use App\SDK\Domain\Messaging\Event\Event;
+use Shared\Domain\Messaging\Event\Event;
 use Broadway\Domain\DomainEventStream;
 use Broadway\EventStore\EventStore;
 use Broadway\Domain\Metadata;

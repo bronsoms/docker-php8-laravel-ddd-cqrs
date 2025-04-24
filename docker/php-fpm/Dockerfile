@@ -1,45 +1,97 @@
-FROM php:7.4-fpm-alpine as production
+FROM docker.io/php:8.3-fpm-bookworm AS base
 
-# Install needed modules to run the application
-RUN apk update \
- && apk --quiet add \
-    libzip-dev \
-    icu-dev
+RUN --mount=type=cache,target=/var/cache/apt \
+    apt-get update \
+ && apt-get install -y \
+      default-mysql-client \
+      iputils-ping \
+      libfcgi0ldbl \
+      libfreetype6-dev \
+      libicu-dev \
+      openssh-client \
+      telnet \
+      unzip \
+      wget \
+      libzip-dev \
+      zip
 
-# Add php extension to work with zip files
-RUN docker-php-ext-install -j$(nproc) \
-    pdo_mysql \
-    zip \
-    bcmath \
-    intl
+RUN docker-php-source extract \
+ && docker-php-ext-install -j$(nproc) \
+      bcmath \
+      intl \
+      mysqli \
+      opcache \
+      pdo_mysql \
+      sysvmsg \
+      zip \
+ && docker-php-source delete
 
-WORKDIR /opt/app
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin/ --filename=composer
 
-# Copy source code into container
-COPY ./src/ .
+COPY ./docker/php-fpm/rootfs/ /
 
-# Install Composer
-RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+RUN mkdir -p /opt/app \
+ && chown -R www-data:www-data /var/www /opt/app
 
-# Install production dependencies
-RUN composer install --no-dev
+USER www-data:www-data
 
-FROM production as development
+WORKDIR /opt/app/
 
-# Install with dev dependencies
-CMD sh -c "composer install && docker-php-entrypoint php-fpm -F"
-COPY ./docker/php-fpm/rootfs /
+VOLUME /opt/data
 
-# xDebug
-ARG XDEBUG_VERSION=2.9.3
-RUN apk add autoconf g++ make
-RUN pecl install xdebug-${XDEBUG_VERSION}; \
-    docker-php-ext-enable xdebug;
+FROM base AS production-base
 
-RUN echo "xdebug.remote_host=docker.for.mac.localhost" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+COPY --chown=www-data:www-data ./src/ /opt/app
 
-# Mysql and dependencies
-RUN apk add libxml2-dev
-RUN docker-php-ext-install mysqli pdo pdo_mysql xml
-COPY ./docker/php-fpm/init.sh /usr/local/bin/init.sh
-COPY ./docker/php-fpm/wait-for-it.sh /usr/local/bin/wait-for-it.sh
+RUN composer install --no-dev --no-interaction --optimize-autoloader \
+ && composer clear-cache
+
+USER root:root
+
+RUN apt-get clean \
+ && rm -rf /var/lib/apt/lists/* \
+ && rm -rf /tmp/pear \
+ && rm -rf /opt/app/tests \
+ && rm -rf /var/www/.ssh
+
+USER www-data:www-data
+
+FROM production-base AS production
+
+HEALTHCHECK --interval=10s --timeout=3s --start-period=60s \
+    CMD \
+    env -i \
+    SCRIPT_NAME=/ping \
+    SCRIPT_FILENAME=/ping \
+    REQUEST_METHOD=GET \
+    cgi-fcgi -bind -connect 127.0.0.1:9000 | grep -i 'pong' || exit 1
+
+FROM base AS local
+
+COPY --chown=www-data:www-data ./src/ /opt/app
+
+USER root:root
+
+RUN docker-php-source extract \
+ && pecl bundle -d /usr/src/php/ext xdebug \
+ && docker-php-ext-install -j$(nproc) xdebug \
+ && docker-php-source delete
+
+RUN --mount=type=cache,target=/var/cache/apt \
+    apt-get install -y \
+      apt-utils \
+      procps \
+      python3 \
+      sudo \
+      tini \
+      vim
+
+RUN cp -vrT /etc/skel /var/www \
+ && chown -R www-data:www-data /var/www
+
+USER www-data:www-data
+
+RUN composer install --no-interaction --optimize-autoloader
+
+ENTRYPOINT [ "tini", "-g", "--", "docker-php-entrypoint" ]
+CMD ["php-fpm"]

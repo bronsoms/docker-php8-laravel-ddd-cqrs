@@ -2,8 +2,8 @@
 
 namespace Tests\SDK\Unit\Domain\Model\User;
 
-use App\SDK\Domain\Exception\User\LastNameNotValidException;
-use App\SDK\Domain\Model\User\LastName;
+use Shared\Domain\Exception\User\LastNameNotValidException;
+use Shared\Domain\Model\User\LastName;
 use Tests\TestCase;
 
 class LastNameTest extends TestCase

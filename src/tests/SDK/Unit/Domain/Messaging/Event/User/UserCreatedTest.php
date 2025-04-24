@@ -2,8 +2,8 @@
 
 namespace Tests\SDK\Unit\Domain\Messaging\Event\User;
 
-use App\SDK\Domain\Messaging\Command\User\CreateUser;
-use App\SDK\Domain\Messaging\Event\User\UserCreated;
+use Shared\Domain\Messaging\Command\User\CreateUser;
+use Shared\Domain\Messaging\Event\User\UserCreated;
 use Tests\SDK\Tools\Stub\User\Domain\FirstNameStub;
 use Tests\SDK\Tools\Stub\User\Domain\LastNameStub;
 use Tests\SDK\Tools\Stub\User\Domain\PasswordStub;

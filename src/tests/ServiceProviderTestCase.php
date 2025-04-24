@@ -2,8 +2,8 @@
 
 namespace Tests;
 
-use App\SDK\Application\Service\Company\DefaultCompanyLocaleRetriever;
-use App\SDK\Domain\Model\Language;
+use Shared\Application\Service\Company\DefaultCompanyLocaleRetriever;
+use Shared\Domain\Model\Language;
 use Closure;
 use Illuminate\Contracts\Console\Kernel;
 use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;

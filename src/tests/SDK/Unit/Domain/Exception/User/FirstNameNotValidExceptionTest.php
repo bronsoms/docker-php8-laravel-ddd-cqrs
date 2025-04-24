@@ -2,9 +2,9 @@
 
 namespace Tests\SDK\Unit\Domain\Exception\User;
 
-use App\SDK\Domain\Exception\User\FirstNameNotValidException;
-use App\SDK\Domain\Exception\DomainException;
-use App\SDK\Domain\Exception\ExceptionCodes;
+use Shared\Domain\Exception\User\FirstNameNotValidException;
+use Shared\Domain\Exception\DomainException;
+use Shared\Domain\Exception\ExceptionCodes;
 use Tests\TestCase;
 
 class FirstNameNotValidExceptionTest extends TestCase

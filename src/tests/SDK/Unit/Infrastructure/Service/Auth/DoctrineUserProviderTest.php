@@ -2,9 +2,9 @@
 
 namespace Tests\SDK\Unit\Infrastructure\Service\Auth;
 
-use App\SDK\Infrastructure\Persistence\User\DoctrineUserRepository;
-use App\SDK\Application\Exception\MethodNotImplementedException;
-use App\SDK\Infrastructure\Service\Auth\DoctrineUserProvider;
+use Shared\Infrastructure\Persistence\User\DoctrineUserRepository;
+use Shared\Application\Exception\MethodNotImplementedException;
+use Shared\Infrastructure\Service\Auth\DoctrineUserProvider;
 use Tests\SDK\Tools\Stub\User\Domain\PasswordStub;
 use Tests\SDK\Tools\Stub\User\Domain\UsernameStub;
 use Tests\SDK\Tools\Stub\User\Domain\UserIdStub;

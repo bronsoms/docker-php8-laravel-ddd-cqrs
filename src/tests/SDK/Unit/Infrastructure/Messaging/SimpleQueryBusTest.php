@@ -2,10 +2,10 @@
 
 namespace Tests\SDK\Unit\Infrastructure\Messaging;
 
-use App\SDK\Domain\Messaging\Query\Invoice\SearchWithPaginationHandler;
-use App\SDK\Infrastructure\Exception\QueryHandlerClassNotFoundException;
-use App\SDK\Infrastructure\Messaging\QueryBus;
-use App\SDK\Infrastructure\Messaging\SimpleQueryBus;
+use Shared\Domain\Messaging\Query\Invoice\SearchWithPaginationHandler;
+use Shared\Infrastructure\Exception\QueryHandlerClassNotFoundException;
+use Shared\Infrastructure\Messaging\QueryBus;
+use Shared\Infrastructure\Messaging\SimpleQueryBus;
 use Illuminate\Contracts\Container\Container;
 use Tests\SDK\Tools\Stub\User\Query\SearchWithPaginationStub;
 use Tests\TestCase;

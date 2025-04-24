@@ -2,16 +2,16 @@
 
 namespace Tests\SDK\Unit\Domain\Model\User;
 
-use App\SDK\Domain\Messaging\Command\User\CreateUser;
+use Shared\Domain\Messaging\Command\User\CreateUser;
 use Tests\SDK\Tools\Stub\User\Domain\FirstNameStub;
 use Tests\SDK\Tools\Stub\User\Domain\LastNameStub;
 use Tests\SDK\Tools\Stub\User\Domain\PasswordStub;
 use Tests\SDK\Tools\Stub\User\Domain\UsernameStub;
 use Tests\SDK\Tools\Stub\User\Domain\UserIdStub;
-use App\SDK\Domain\Service\SystemClockInterface;
-use App\SDK\Domain\Model\User\CreateUserFactory;
-use App\SDK\Domain\Service\User\UserIdGenerator;
-use App\SDK\Domain\Model\User\User;
+use Shared\Domain\Service\SystemClockInterface;
+use Shared\Domain\Model\User\CreateUserFactory;
+use Shared\Domain\Service\User\UserIdGenerator;
+use Shared\Domain\Model\User\User;
 use Tests\TestCase;
 
 class CreateUserFactoryTest extends TestCase

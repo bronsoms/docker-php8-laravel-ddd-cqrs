@@ -3,7 +3,7 @@
 namespace Tests\SDK\Unit\Infrastructure\Model;
 
 use Tests\SDK\Tools\RandomNumberGenerator;
-use App\SDK\Infrastructure\Model\Event;
+use Shared\Infrastructure\Model\Event;
 use Tests\TestCase;
 
 class EventTest extends TestCase

@@ -2,7 +2,7 @@
 
 namespace Tests;
 
-use App\SDK\Infrastructure\Providers\DoctrineServiceProvider;
+use Shared\Infrastructure\Providers\DoctrineServiceProvider;
 use Doctrine\DBAL\Schema\AbstractSchemaManager;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\ORM\EntityManagerInterface;

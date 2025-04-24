@@ -2,8 +2,8 @@
 
 namespace Tests\SDK\Unit\Domain\Messaging\Command\User;
 
-use App\SDK\Domain\Exception\InvalidParametersException;
-use App\SDK\Domain\Messaging\Command\User\CreateUser;
+use Shared\Domain\Exception\InvalidParametersException;
+use Shared\Domain\Messaging\Command\User\CreateUser;
 use Tests\SDK\Tools\Stub\User\Domain\FirstNameStub;
 use Tests\SDK\Tools\Stub\User\Domain\LastNameStub;
 use Tests\SDK\Tools\Stub\User\Domain\PasswordStub;

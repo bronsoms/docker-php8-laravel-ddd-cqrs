@@ -2,7 +2,7 @@
 
 namespace Tests\SDK\Tools\Stub\User\Domain;
 
-use App\SDK\Domain\Model\User\Password;
+use Shared\Domain\Model\User\Password;
 
 class PasswordStub
 {

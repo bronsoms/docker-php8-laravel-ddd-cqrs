@@ -169,18 +169,15 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
-        App\SDK\Infrastructure\Providers\SDKServiceProvider::class,
-        App\SDK\Infrastructure\Providers\ApiRouteServiceProvider::class,
-        App\SDK\Infrastructure\Providers\DoctrineServiceProvider::class,
-        App\SDK\Infrastructure\Providers\UserServiceProvider::class,
-        App\SDK\Infrastructure\Providers\AuthServiceProvider::class,
+        Shared\Infrastructure\Providers\SharedServiceProvider::class,
+        Shared\Infrastructure\Providers\ApiRouteServiceProvider::class,
+        Shared\Infrastructure\Providers\DoctrineServiceProvider::class,
+        Shared\Infrastructure\Providers\UserServiceProvider::class,
+        Shared\Infrastructure\Providers\AuthServiceProvider::class,
 
-        Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
+        //Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
     ],
 
     /*

@@ -2,17 +2,17 @@
 
 namespace Tests\SDK\Unit\Infrastructure\Providers;
 
-use App\SDK\Infrastructure\Messaging\Broadway\Service\DomainMessageMetadataEnricher;
-use App\SDK\Infrastructure\Persistence\Doctrine\DoctrineEventRepository;
+use Shared\Infrastructure\Messaging\Broadway\Service\DomainMessageMetadataEnricher;
+use Shared\Infrastructure\Persistence\Doctrine\DoctrineEventRepository;
 use Broadway\EventSourcing\MetadataEnrichment\MetadataEnricher;
-use App\SDK\Infrastructure\Providers\SDKServiceProvider;
-use App\SDK\Infrastructure\Messaging\SimpleCommandBus;
-use App\SDK\Infrastructure\Messaging\SimpleEventBus;
-use App\SDK\Infrastructure\Messaging\SimpleQueryBus;
-use App\SDK\Infrastructure\Service\Time\SystemClock;
+use Shared\Infrastructure\Providers\SharedServiceProvider;
+use Shared\Infrastructure\Messaging\SimpleCommandBus;
+use Shared\Infrastructure\Messaging\SimpleEventBus;
+use Shared\Infrastructure\Messaging\SimpleQueryBus;
+use Shared\Infrastructure\Service\Time\SystemClock;
 use Illuminate\Contracts\Foundation\Application;
-use App\SDK\Domain\Service\SystemClockInterface;
-use App\SDK\Infrastructure\Messaging\QueryBus;
+use Shared\Domain\Service\SystemClockInterface;
+use Shared\Infrastructure\Messaging\QueryBus;
 use Broadway\CommandHandling\CommandBus;
 use Broadway\EventHandling\EventBus;
 use Broadway\EventStore\EventStore;
@@ -24,12 +24,12 @@ class SDKServiceProviderTest extends ServiceProviderTestCase
     /** @var Application */
     private $application;
 
-    private SDKServiceProvider $sut;
+    private SharedServiceProvider $sut;
 
     protected function setUp(): void
     {
         $this->application = (new Prophet())->prophesize(Application::class);
-        $this->sut = new SDKServiceProvider($this->application->reveal());
+        $this->sut = new SharedServiceProvider($this->application->reveal());
     }
 
     public function testRegisterShouldBeValid()

@@ -67,7 +67,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'doctrine',
-            'model' => \App\SDK\Domain\Model\User\User::class,
+            'model' => \Shared\Domain\Model\User\User::class,
             'table' => 'users'
         ],
 

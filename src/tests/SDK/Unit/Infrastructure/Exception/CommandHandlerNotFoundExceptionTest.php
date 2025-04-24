@@ -2,8 +2,8 @@
 
 namespace Tests\SDK\Unit\Infrastructure\Exception;
 
-use App\SDK\Infrastructure\Exception\CommandHandlerNotFoundException;
-use App\SDK\Infrastructure\Exception\InfrastructureException;
+use Shared\Infrastructure\Exception\CommandHandlerNotFoundException;
+use Shared\Infrastructure\Exception\InfrastructureException;
 use Tests\ExceptionTestBase;
 
 class CommandHandlerNotFoundExceptionTest extends ExceptionTestBase

@@ -2,7 +2,7 @@
 
 namespace Tests\SDK\Unit\Infrastructure\Messaging\Broadway\Service;
 
-use App\SDK\Infrastructure\Messaging\Broadway\Service\DateTimeFactory;
+use Shared\Infrastructure\Messaging\Broadway\Service\DateTimeFactory;
 use Broadway\Domain\DateTime;
 use Tests\TestCase;
 use DateTimeZone;

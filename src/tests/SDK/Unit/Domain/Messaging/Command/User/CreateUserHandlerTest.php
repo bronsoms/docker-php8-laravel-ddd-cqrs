@@ -2,10 +2,10 @@
 
 namespace Tests\SDK\Unit\Domain\Messaging\Command\User;
 
-use App\SDK\Domain\Messaging\Command\User\CreateUser;
-use App\SDK\Domain\Messaging\Command\User\CreateUserHandler;
-use App\SDK\Domain\Model\User\CreateUserFactory;
-use App\SDK\Domain\Model\User\UserRepository;
+use Shared\Domain\Messaging\Command\User\CreateUser;
+use Shared\Domain\Messaging\Command\User\CreateUserHandler;
+use Shared\Domain\Model\User\CreateUserFactory;
+use Shared\Domain\Model\User\UserRepository;
 use Tests\SDK\Tools\Stub\User\Domain\FirstNameStub;
 use Tests\SDK\Tools\Stub\User\Domain\LastNameStub;
 use Tests\SDK\Tools\Stub\User\Domain\PasswordStub;

@@ -2,8 +2,8 @@
 
 namespace Tests\SDK\Unit\Infrastructure\Exception;
 
-use App\SDK\Infrastructure\Exception\DataPersistenceException;
-use App\SDK\Infrastructure\Exception\InfrastructureException;
+use Shared\Infrastructure\Exception\DataPersistenceException;
+use Shared\Infrastructure\Exception\InfrastructureException;
 use Tests\ExceptionTestBase;
 
 class DataPersistenceExceptionTest extends ExceptionTestBase

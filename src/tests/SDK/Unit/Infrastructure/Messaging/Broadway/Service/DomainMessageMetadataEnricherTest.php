@@ -2,10 +2,10 @@
 
 namespace Tests\SDK\Unit\Infrastructure\Messaging\Broadway\Service;
 
-use App\SDK\Infrastructure\Messaging\Broadway\Service\DomainMessageMetadataEnricher;
+use Shared\Infrastructure\Messaging\Broadway\Service\DomainMessageMetadataEnricher;
 use Tests\SDK\Tools\Stub\User\Domain\UserIdStub;
 use Illuminate\Contracts\Auth\Guard;
-use App\SDK\Domain\Model\User\User;
+use Shared\Domain\Model\User\User;
 use Illuminate\Auth\AuthManager;
 use Broadway\Domain\Metadata;
 use Tests\TestCase;

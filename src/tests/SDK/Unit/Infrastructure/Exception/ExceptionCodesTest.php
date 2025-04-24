@@ -2,7 +2,7 @@
 
 namespace Tests\SDK\Unit\Infrastructure\Exception;
 
-use App\SDK\Infrastructure\Exception\ExceptionCodes;
+use Shared\Infrastructure\Exception\ExceptionCodes;
 use PHPUnit\Framework\TestCase;
 use ReflectionClass;
 

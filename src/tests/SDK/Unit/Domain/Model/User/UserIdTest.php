@@ -2,10 +2,10 @@
 
 namespace Tests\SDK\Unit\Domain\Model\User;
 
-use App\SDK\Domain\Exception\User\UserIdNotValidException;
+use Shared\Domain\Exception\User\UserIdNotValidException;
 use Tests\SDK\Tools\Stub\User\Domain\UserIdStub;
 use Tests\SDK\Tools\RandomNumberGenerator;
-use App\SDK\Domain\Model\User\UserId;
+use Shared\Domain\Model\User\UserId;
 use Tests\TestCase;
 
 class UserIdTest extends TestCase

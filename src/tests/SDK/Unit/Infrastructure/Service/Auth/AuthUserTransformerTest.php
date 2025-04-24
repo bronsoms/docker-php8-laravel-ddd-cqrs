@@ -2,7 +2,7 @@
 
 namespace Tests\SDK\Unit\Infrastructure\Service\Auth;
 
-use App\SDK\Infrastructure\Service\Auth\AuthUserTransformer;
+use Shared\Infrastructure\Service\Auth\AuthUserTransformer;
 use Tests\SDK\Tools\Stub\User\Domain\UserStub;
 use Tests\TestCase;
 

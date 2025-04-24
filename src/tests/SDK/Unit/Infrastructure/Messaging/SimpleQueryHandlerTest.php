@@ -2,11 +2,11 @@
 
 namespace Tests\SDK\Unit\Infrastructure\Messaging;
 
-use App\SDK\Domain\Messaging\Query\Company\CompanyLocationHandler;
-use App\SDK\Domain\Messaging\Query\Company\GetCompany;
-use App\SDK\Domain\ReadModel\Company\CompanyReadModel;
-use App\SDK\Infrastructure\Exception\QueryHandlerMethodNotFoundException;
-use App\SDK\Infrastructure\Messaging\SimpleQueryHandler;
+use Shared\Domain\Messaging\Query\Company\CompanyLocationHandler;
+use Shared\Domain\Messaging\Query\Company\GetCompany;
+use Shared\Domain\ReadModel\Company\CompanyReadModel;
+use Shared\Infrastructure\Exception\QueryHandlerMethodNotFoundException;
+use Shared\Infrastructure\Messaging\SimpleQueryHandler;
 use PHPUnit\Framework\TestCase;
 use Tests\SDK\Tools\Stub\Company\CompanyIdStub;
 
