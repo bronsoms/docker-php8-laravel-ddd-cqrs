@@ -31,7 +31,7 @@ class SchemaCreateCommand extends Command
      */
     public function handle()
     {
-        $em = $em = App::make(DoctrineServiceProvider::ENTITY_MANAGER);
+        $em = App::make(DoctrineServiceProvider::ENTITY_MANAGER);
 
         if (!$this->option('sql')) {
             $this->error('ATTENTION: This operation should not be executed in a production environment.');

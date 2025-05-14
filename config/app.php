@@ -169,7 +169,7 @@ return [
         /*
          * Application Service Providers...
          */
-        App\Providers\RouteServiceProvider::class,
+        src\Providers\RouteServiceProvider::class,
 
         Shared\Infrastructure\Providers\SharedServiceProvider::class,
         Shared\Infrastructure\Providers\ApiRouteServiceProvider::class,

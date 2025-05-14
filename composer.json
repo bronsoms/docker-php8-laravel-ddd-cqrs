@@ -46,8 +46,7 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "app/",
-            "Shared\\": "app/Shared",
+            "Shared\\": "src/Shared",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
         }

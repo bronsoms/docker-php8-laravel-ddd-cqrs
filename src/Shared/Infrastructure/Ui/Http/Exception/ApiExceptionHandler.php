@@ -2,7 +2,7 @@
 
 namespace Shared\Infrastructure\Ui\Http\Exception;
 
-use App\Exceptions\Handler as ExceptionHandler;
+use src\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Http\JsonResponse;
 use Ramsey\Uuid\Uuid;

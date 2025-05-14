@@ -41,7 +41,7 @@ VOLUME /opt/data
 
 FROM base AS production-base
 
-COPY --chown=www-data:www-data ./src/ /opt/app
+COPY --chown=www-data:www-data ./composer.json ./composer.lock /opt/app/
 
 RUN composer install --no-dev --no-interaction --optimize-autoloader \
  && composer clear-cache
@@ -68,8 +68,6 @@ HEALTHCHECK --interval=10s --timeout=3s --start-period=60s \
 
 FROM base AS local
 
-COPY --chown=www-data:www-data ./src/ /opt/app
-
 USER root:root
 
 RUN docker-php-source extract \
@@ -90,8 +88,6 @@ RUN cp -vrT /etc/skel /var/www \
  && chown -R www-data:www-data /var/www
 
 USER www-data:www-data
-
-RUN composer install --no-interaction --optimize-autoloader
 
 ENTRYPOINT [ "tini", "-g", "--", "docker-php-entrypoint" ]
 CMD ["php-fpm"]
